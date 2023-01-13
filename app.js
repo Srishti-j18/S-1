@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path");
 const fs = require("fs");
-const { name } = require("ejs");
+// const { name } = require("ejs");
 const port = 3000;
 const app = express();
 
@@ -24,10 +24,10 @@ app.post('/', (req, res) => {
     gender = req.body.gender;
     address = req.body.address;
     more = req.body.more;
-    let outputToWrite = `the name of the client is ${name},${age}years old,${gender}, residing at ${address}. More about her/him : ${more}`;
+    let outputToWrite = `The name of the client is ${name},${age}years old,${gender}, residing at ${address}. More about her/him : ${more}`;
     fs.writeFileSync('output.txt', outputToWrite);
-    const con = "Thankyou!";
-    const params = { 'message': 'Your form has been submitted successfully', "content": con };
+    const con = "Thankyou";
+    const params = { 'message': 'Your form has been submitted successfully',"content":con };
     res.status(200).render('index.pug', params);
 })
 
